@@ -1,43 +1,47 @@
-import { Component } from 'react';
-import './App.css';
-import PokemonCard from './components/Card';
-import Backpack from './components/Backpack';
-import pokemons from './assets/data.json';
+import { Component } from "react";
+import Todo from "./components/Todo";
+import TodoInput from "./components/TodoInput";
 
 class App extends Component {
-
   constructor() {
     super();
     this.state = {
-      counter: 1,
-      collection: []
+      counter: 0,
+      todos: [
+        { "title": "Clean" },
+        { "title": "Code" },
+        { "title": "Eat" }
+      ]
     }
-  }
-  increment = () => {
-    //this.state.counter = this.state.counter + 1;
-    this.setState({ counter: this.state.counter + 1 })
+    this.handleChange = this.handleChange.bind(this);
+    this.addTodo = this.addTodo.bind(this);
   }
 
-  catchPokemon = (e) => {
-    //update state
-    //add selected pokemon to pokemon collection
-    let result = pokemons.find(pokemon => pokemon.name === e.target.alt);
-    console.log(result);
+  handleChange(todo) {
     this.setState({
-      collection: this.state.collection.concat([result])
+      todos: this.state.todos.concat([todo])
     })
   }
 
+  addTodo(e) {
+    let newTodo = {
+      "title": e.target[0].value
+    };
+    this.handleChange(newTodo);
+    e.preventDefault();
+  }
+
   render() {
-    return <section>
-      <h1>Pokemons</h1>
-      <Backpack pokemons={this.state.collection} />
-      <section className="cards-container">
+    return (
+      <section>
+        <h1>TODO LIST</h1>
+        <TodoInput addTodo={this.addTodo} />
         {
-          pokemons.map((pokemon, index) => <PokemonCard key={index} catchPokemon={this.catchPokemon} name={pokemon.name} />)
+          this.state.todos.map((todo, index) => <Todo key={index} todo={todo.title} />)
         }
       </section>
-    </section>
+    );
   }
 }
+
 export default App;
