@@ -17,9 +17,10 @@ function PokemonCard(props) {
     let imgUrl = `https://img.pokemondb.net/artwork/${props.name}.jpg`;
 
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} >
             <CardActionArea>
                 <CardMedia
+                    onClick={props.catchPokemon}
                     component="img"
                     alt={props.name}
                     image={imgUrl}
