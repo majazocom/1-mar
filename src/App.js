@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import './App.css';
-import Card from './components/Card';
+import PokemonCard from './components/Card';
 import pokemons from './assets/data.json';
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
       <h1>Pokemons</h1>
       <section className="cards-container">
         {
-          pokemons.map((pokemon, index) => <Card key={index} name={pokemon.name} />)
+          pokemons.map((pokemon, index) => <PokemonCard key={index} name={pokemon.name} />)
         }
       </section>
     </section>
