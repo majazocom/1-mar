@@ -13,18 +13,18 @@ class App extends Component {
   }
   increment = () => {
     //this.state.counter = this.state.counter + 1;
-    this.setState({counter: this.state.counter + 1})
+    this.setState({ counter: this.state.counter + 1 })
   }
 
   render() {
     console.log(pokemons);
     return <section>
-      <h1>HEJ</h1>
-      <h2>{this.state.counter}</h2>
-      {
-        pokemons.map((pokemon, index) => <Card key={index} name={pokemon.name} />)
-      }
-      <Card handleClick={this.increment} />
+      <h1>Pokemons</h1>
+      <section className="cards-container">
+        {
+          pokemons.map((pokemon, index) => <Card key={index} name={pokemon.name} />)
+        }
+      </section>
     </section>
   }
 }
