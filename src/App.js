@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import './App.css';
-import Child from './components/MyComponent';
+import Card from './components/Card';
+import pokemons from './assets/data.json';
 
 class App extends Component {
 
@@ -10,17 +11,20 @@ class App extends Component {
       counter: 1
     }
   }
-  
   increment = () => {
     //this.state.counter = this.state.counter + 1;
     this.setState({counter: this.state.counter + 1})
   }
 
   render() {
+    console.log(pokemons);
     return <section>
       <h1>HEJ</h1>
       <h2>{this.state.counter}</h2>
-      <Child handleClick={this.increment} />
+      {
+        pokemons.map((pokemon, index) => <Card key={index} name={pokemon.name} />)
+      }
+      <Card handleClick={this.increment} />
     </section>
   }
 }

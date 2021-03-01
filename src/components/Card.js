@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-class Child extends Component {
+class Card extends Component {
     render() {
         return(
             <button onClick={this.props.handleClick}>+</button>
@@ -8,4 +8,4 @@ class Child extends Component {
     }
 }
 
-export default Child;
+export default Card;
